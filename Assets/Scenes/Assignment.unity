@@ -470,14 +470,16 @@ MonoBehaviour:
   as06Num1: 0
   as06Op: 0
   as06Num2: 0
+  result: 0
+  isOp: 0
   as07Month: 0
   as08Quantity: 0
   as08Price: 0
   as08Payment: 0
   as09UserChoice: 0
   as09ComputerChoice: 0
-  as10WeaponType: 
-  as10BaseDamage: 0
+  as10WeaponType: Sword
+  as10BaseDamage: 1
   as11Score: 0
   as11CompletionTime: 0
 --- !u!4 &1270451329

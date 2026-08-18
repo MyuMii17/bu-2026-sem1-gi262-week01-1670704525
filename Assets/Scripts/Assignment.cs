@@ -18,7 +18,6 @@ public class Assignment : MonoBehaviour
         Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
         Debug.Log("Press Spacbar to start.");
 
-        runAction = InputSystem.actions.FindAction("RunSystem");
         nextStateAction = InputSystem.actions.FindAction("NextState");
         backStateAction = InputSystem.actions.FindAction("BackState");
         startStateAction = InputSystem.actions.FindAction("StartState");
@@ -41,7 +40,7 @@ public class Assignment : MonoBehaviour
         if (backStateAction.WasReleasedThisFrame() && state > 0)
         {
             state--;
-            state = state % 8;
+            state = state % 12;
             StateName();
             Debug.Log($"State : {state} , {stateName}");
             Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
@@ -52,7 +51,7 @@ public class Assignment : MonoBehaviour
         if (nextStateAction.WasReleasedThisFrame())
         {
             state++;
-            state = state % 8;
+            state = state % 12;
             StateName();
             Debug.Log($"State : {state} , {stateName}");
             Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
@@ -74,48 +73,82 @@ public class Assignment : MonoBehaviour
                     As03_ValidatePassword();
                     break;
                 case 3:
-                    As03_ValidatePassword();
+                    As04_GetGrade();
                     break;
                 case 4:
-                    As03_ValidatePassword();
+                    As05_IsLeapYear();
                     break;
                 case 5:
-                    As03_ValidatePassword();
+                    As06_Calculate();
+                    if (isOp)
+                    {
+                        Debug.Log($"{as06Num1} {as06Op} {as06Num2} = {result}");
+                    }
+                    else
+                    {
+                        Debug.Log("Invalid Operator. Please change the operator to +, -, * or /");
+                    }
                     break;
                 case 6:
-                    As03_ValidatePassword();
+                    As07_GetSeason();
                     break;
                 case 7:
-                    Debug.Log("GET BACK NOW!!! \n We have only 0 - 6 state");
+                    As08_PurchasingSystemExample();
+                    break;
+                case 8:
+                    As09_RockPaperScissorsExample();
+                    break;
+                case 9:
+                    As10_CalculateWeaponDamage();
+                    break;
+                case 10:
+                    As11_DeterminePlayerRank();
+                    break;
+                case 11:
+                    Debug.Log("GET BACK NOW!!! \n We have only 0 - 10 states");
                     break;
             }
         }
+    }
+
     void StateName()
     {
         switch (state)
         {
             case 0:
-                stateName = "isSixOClock???";
+                stateName = "Check Number Sign";
                 break;
             case 1:
-                stateName = "Is Password Correct???";
+                stateName = "Get Day Name";
                 break;
             case 2:
-                stateName = "A Number V1";
+                stateName = "Validate Password";
                 break;
             case 3:
-                stateName = "A Number V2";
+                stateName = "Get Grade";
                 break;
             case 4:
-                stateName = "Guess The Number 1, 2 or 3 V1";
+                stateName = "Is Leap Year";
                 break;
             case 5:
-                stateName = "Guess The Number 1, 2 or 3 V2";
+                stateName = "Calculate";
                 break;
             case 6:
-                stateName = "Can you Verify you Identity???";
+                stateName = "Get Season";
                 break;
             case 7:
+                stateName = "Purchasing System";
+                break;
+            case 8:
+                stateName = "Rock Paper Scissors";
+                break;
+            case 9:
+                stateName = "Calculate Weapon Damage";
+                break;
+            case 10:
+                stateName = "Determine Player Rank";
+                break;
+            case 11:
                 stateName = "?????";
                 break;
         }
@@ -124,60 +157,151 @@ public class Assignment : MonoBehaviour
     public int as01Number;
     public void As01_CheckNumberSign()
     {
-        // TODO: Implement logic to determine sign
-        // Example: Debug.Log("Positive");
-        throw new System.NotImplementedException();
+        if(as01Number > 0)
+        {
+            Debug.Log($"{as01Number} is Positive");
+        }
+        else if(as01Number < 0)
+        {
+            Debug.Log($"{as01Number} is Negative");
+        }
+        else{
+            Debug.Log($"{as01Number} is Zero");
+        }
     }
 
     public int as02Day;
     public void As02_GetDayName()
     {
-        // TODO: Implement logic to return day name
-        // Example: Debug.Log("Monday");
-        throw new System.NotImplementedException();
+        switch(as02Day){
+            case 1:
+                Debug.Log($"{as02Day} is Monday");
+                break;
+            case 2:
+                Debug.Log($"{as02Day} is Tuesday");
+                break;
+            case 3:
+                Debug.Log($"{as02Day} is Wednesday");
+                break;
+            case 4:
+                Debug.Log($"{as02Day} is Thursday");
+                break;
+            case 5:
+                Debug.Log($"{as02Day} is Friday");
+                break;
+            case 6:
+                Debug.Log($"{as02Day} is Saturday");
+                break;
+            case 7:
+                Debug.Log($"{as02Day} is Sunday");
+                break;
+            default:
+                Debug.Log($"{as02Day} is Invalid Day");
+                break;
+        }
     }
 
     public string as03InputPassword;
     public string as03CorrectPassword;
     public void As03_ValidatePassword()
     {
-        // TODO: Implement password validation logic
-        // Example: Debug.Log("True");
-        throw new System.NotImplementedException();
+        as03CorrectPassword = "113333555555";
+
+        if(as03InputPassword == as03CorrectPassword){
+            Debug.Log($"{as03InputPassword} is Correct Password. Look like you have a very good memory.");
+        }
+        else{
+            Debug.Log($"{as03InputPassword} is Incorrect Password. Your are at limit now. Please try againg in next 99 year. (>.0)");
+        }
     }
 
     public int as04Score;
     public void As04_GetGrade()
     {
-        // TODO: Implement logic to return grade
-        // Example: Debug.Log("A");
-        throw new System.NotImplementedException();
+        if(as04Score >= 80){
+            Debug.Log($"{as04Score} is Your Score. Your Grade is A. Hmm Did you cheat???");
+        }
+        else if(as04Score >= 70){
+            Debug.Log($"{as04Score} is Your Score. Your Grade is B. You are Good but you should do better than this.");
+        }
+        else if(as04Score >= 60){
+            Debug.Log($"{as04Score} is Your Score. Your Grade is C. It ok but It will going to bad for sure.");
+        }
+        else if(as04Score >= 50){
+            Debug.Log($"{as04Score} is Your Score. Your Grade is D. You should to try harder.");
+        }
+        else{
+            Debug.Log($"{as04Score} is Your Score. Your Grade is F. Drop a course and try again next year. (>.0)");
+        }
     }
 
     public int as05Year;
     public void As05_IsLeapYear()
     {
-        // TODO: Implement leap year check logic
-        // Example: Debug.Log("True");
-        throw new System.NotImplementedException();
+        if(as05Year % 4 == 0  && as05Year % 100 != 0 || as05Year % 400 == 0)
+        {
+            Debug.Log($"{as05Year} is a Leap Year");
+        }
+        else{
+            Debug.Log($"{as05Year} is not a Leap Year");
+        }
     }
 
     public double as06Num1;
     public char as06Op;
     public double as06Num2;
+    public double result = 0.0;
+    public bool isOp;
     public void As06_Calculate()
     {
-        // TODO: Implement calculator logic
-        // Example: Debug.Log("Result: 42");
-        throw new System.NotImplementedException();
+        isOp = true;
+        switch(as06Op)
+        {
+            case '+':
+                result = as06Num1 + as06Num2;
+                break;
+            case '-':
+                result = as06Num1 - as06Num2;
+                break;
+            case '*':
+                 result = as06Num1 * as06Num2;
+                 break;
+            case '/':
+                if(as06Num2 == 0)
+                {
+                    Debug.Log("Cannot divide by zero");
+                    return;
+                }
+                result = as06Num1 / as06Num2;
+                break;
+            default:
+                isOp = false;
+                break;
+        }
     }
 
     public int as07Month;
     public void As07_GetSeason()
     {
-        // TODO: Implement logic to return season
-        // Example: Debug.Log("Summer");
-        throw new System.NotImplementedException();
+        if(as07Month == 12 || as07Month == 1 || as07Month == 2)
+        {
+            Debug.Log($"{as07Month} is Winter");
+        }
+        else if(as07Month >= 3 && as07Month <= 5)
+        {
+            Debug.Log($"{as07Month} is Spring");
+        }
+        else if(as07Month >= 6 && as07Month <= 8)
+        {
+            Debug.Log($"{as07Month} is Summer");
+        }
+        else if(as07Month >= 9 && as07Month <= 11)
+        {
+            Debug.Log($"{as07Month} is Autumn");
+        }
+        else{
+            Debug.Log($"{as07Month} is Invalid Month");
+        }
     }
 
     public int as08Quantity;
@@ -185,31 +309,132 @@ public class Assignment : MonoBehaviour
     public int as08Payment;
     public void As08_PurchasingSystemExample()
     {
-        throw new System.NotImplementedException();
+        if(as08Quantity > 0)
+        {
+            if(as08Payment >= as08Price)
+            {
+                Debug.Log("You have received the product.");
+                if(as08Payment > as08Price)
+                {
+                    int change = as08Payment - as08Price;
+                    Debug.Log($"Your change is {change}");
+                }
+            }
+            else
+            {
+                Debug.Log("You have not received the product. \n Please pay the full amount.");
+            }
+        }
+        else
+        {
+            Debug.Log("Out of stock. \n Please try again later.");
+        }
     }
 
     public int as09UserChoice;
     public int as09ComputerChoice;
     public void As09_RockPaperScissorsExample()
     {
-        throw new System.NotImplementedException();
+        as09ComputerChoice = Random.Range(0, 3);
+
+        if(as09UserChoice < 0 || as09UserChoice > 2)
+        {
+            Debug.Log("Invalid choice. Please choose 0 for Rock, 1 for Paper, or 2 for Scissors.");
+            return;
+        }
+
+        if(as09UserChoice == as09ComputerChoice)
+        {
+            Debug.Log("It's a tie!");
+        }
+        else if((as09UserChoice == 0 && as09ComputerChoice == 2) ||
+                (as09UserChoice == 1 && as09ComputerChoice == 0) ||
+                (as09UserChoice == 2 && as09ComputerChoice == 1))
+        {
+            Debug.Log("You win!");
+        }
+        else
+        {
+            Debug.Log("You lose!");
+        }
     }
 
     public string as10WeaponType;
     public int as10BaseDamage;
     public void As10_CalculateWeaponDamage()
     {
-        // TODO: Add your implementation here
-        // Example: Debug.Log("result as string");
-        throw new System.NotImplementedException();
+        double damageMultiplier = 1.0;
+
+        switch(as10WeaponType.ToLower())
+        {
+            case "sword":
+                damageMultiplier = 1.3;
+                break;
+            case "axe":
+                damageMultiplier = 1.4;
+                break;
+            case "bow":
+                damageMultiplier = 1.2;
+                break;
+            case "staff":
+                damageMultiplier = 1.5;
+                break;
+            case "dagger":
+                damageMultiplier = 1.1;
+                break;
+            default:
+                as10WeaponType = "Unknown Weapon";
+                damageMultiplier = 1.0;
+                break;
+        }
+
+        int totalDamage = (int)(as10BaseDamage * damageMultiplier);
+        Debug.Log($"Weapon Type: {as10WeaponType}, total Damage: {totalDamage}");
     }
 
     public int as11Score;
     public int as11CompletionTime;
     public void As11_DeterminePlayerRank()
     {
-        // TODO: Add your implementation here
-        // Example: Debug.Log("result as string");
-        throw new System.NotImplementedException();
+        string rank;
+        int totalCoin;
+
+        if(as11Score < 0 || as11CompletionTime < 0)
+        {
+            Debug.Log("Invalid score or time");
+            return;
+        }
+
+        if(as11Score >= 8000)
+        {
+            rank = "Gold";
+            totalCoin = 100;
+        }
+        else if(as11Score >= 6000)
+        {
+            rank = "Silver";
+            totalCoin = 75;
+        }
+        else if(as11Score >= 4000)
+        {
+            rank = "Bronze";
+            totalCoin = 50;
+        }
+        else
+        {
+            rank = "Participation";
+            totalCoin = 25;
+        }
+
+        if(as11CompletionTime <= 30)
+        {
+            totalCoin += 25;
+        }
+        else if(as11CompletionTime <= 60)
+        {
+            totalCoin += 10;
+        }
+
+        Debug.Log($"Player Rank: {rank}, Coins Awarded: {totalCoin}");
     }
 }

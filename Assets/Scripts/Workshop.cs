@@ -18,7 +18,6 @@ public class Workshop : MonoBehaviour
         Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
         Debug.Log("Press Spacbar to start.");
 
-        runAction = InputSystem.actions.FindAction("RunSystem");
         nextStateAction = InputSystem.actions.FindAction("NextState");
         backStateAction = InputSystem.actions.FindAction("BackState");
         startStateAction = InputSystem.actions.FindAction("StartState");
