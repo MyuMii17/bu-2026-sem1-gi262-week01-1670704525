@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c22fb7f59b3b74792a60f7ec853410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Workshop
-  isSixOClock: 0
+  isSixOClock: 1
   password: 
   as03Number: 0
   as04Number: 0
