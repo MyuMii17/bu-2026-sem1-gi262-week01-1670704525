@@ -1,10 +1,28 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Assignment : MonoBehaviour
 {
+    private int state;
+    private string stateName;
+    private InputAction nextStateAction;
+    private InputAction backStateAction;
+    private InputAction startStateAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        state = 0;
+        StateName();
+        Debug.Log($"State : {state} , {stateName}");
+        Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
+        Debug.Log("Press Spacbar to start.");
+
+        runAction = InputSystem.actions.FindAction("RunSystem");
+        nextStateAction = InputSystem.actions.FindAction("NextState");
+        backStateAction = InputSystem.actions.FindAction("BackState");
+        startStateAction = InputSystem.actions.FindAction("StartState");
+
         // As01_CheckNumberSign();
         // As02_GetDayName();
         // As03_ValidatePassword();
@@ -16,6 +34,91 @@ public class Assignment : MonoBehaviour
         // As09_RockPaperScissorsExample();
         // As10_CalculateWeaponDamage();
         // As11_DeterminePlayerRank();
+    }
+    void Update()
+    {
+        //Go Bcak to previous State.
+        if (backStateAction.WasReleasedThisFrame() && state > 0)
+        {
+            state--;
+            state = state % 8;
+            StateName();
+            Debug.Log($"State : {state} , {stateName}");
+            Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
+            Debug.Log("Press Spacbar to start.");
+        }
+
+        //Go to Next State.
+        if (nextStateAction.WasReleasedThisFrame())
+        {
+            state++;
+            state = state % 8;
+            StateName();
+            Debug.Log($"State : {state} , {stateName}");
+            Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
+            Debug.Log("Press Spacbar to start.");
+        }
+
+        //Start the state.
+        if (startStateAction.WasReleasedThisFrame())
+        {
+            switch (state)
+            {
+                case 0:
+                    As01_CheckNumberSign();
+                    break;
+                case 1:
+                    As02_GetDayName();
+                    break;
+                case 2:
+                    As03_ValidatePassword();
+                    break;
+                case 3:
+                    As03_ValidatePassword();
+                    break;
+                case 4:
+                    As03_ValidatePassword();
+                    break;
+                case 5:
+                    As03_ValidatePassword();
+                    break;
+                case 6:
+                    As03_ValidatePassword();
+                    break;
+                case 7:
+                    Debug.Log("GET BACK NOW!!! \n We have only 0 - 6 state");
+                    break;
+            }
+        }
+    void StateName()
+    {
+        switch (state)
+        {
+            case 0:
+                stateName = "isSixOClock???";
+                break;
+            case 1:
+                stateName = "Is Password Correct???";
+                break;
+            case 2:
+                stateName = "A Number V1";
+                break;
+            case 3:
+                stateName = "A Number V2";
+                break;
+            case 4:
+                stateName = "Guess The Number 1, 2 or 3 V1";
+                break;
+            case 5:
+                stateName = "Guess The Number 1, 2 or 3 V2";
+                break;
+            case 6:
+                stateName = "Can you Verify you Identity???";
+                break;
+            case 7:
+                stateName = "?????";
+                break;
+        }
     }
 
     public int as01Number;

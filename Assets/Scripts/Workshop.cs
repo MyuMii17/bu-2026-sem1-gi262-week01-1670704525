@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class Workshop : MonoBehaviour
 {
-    private InputAction runAction;
     private InputAction nextStateAction;
     private InputAction backStateAction;
     private InputAction startStateAction;
