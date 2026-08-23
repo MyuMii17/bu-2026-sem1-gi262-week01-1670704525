@@ -4,23 +4,23 @@ using UnityEngine.InputSystem;
 
 public class Assignment : MonoBehaviour
 {
-    private int state;
-    private string stateName;
-    private InputAction nextStateAction;
-    private InputAction backStateAction;
-    private InputAction startStateAction;
+    private int stage;
+    private string stageName;
+    private InputAction nextStageAction;
+    private InputAction backStageAction;
+    private InputAction startStageAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        state = 0;
-        StateName();
-        Debug.Log($"State : {state} , {stateName}");
-        Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
+        stage = 0;
+        StageName();
+        Debug.Log($"Stage : {stage} , {stageName}");
+        Debug.Log("Press N To Go Next Stage And Press B To Go To Previous Stage");
         Debug.Log("Press Spacbar to start.");
 
-        nextStateAction = InputSystem.actions.FindAction("NextState");
-        backStateAction = InputSystem.actions.FindAction("BackState");
-        startStateAction = InputSystem.actions.FindAction("StartState");
+        nextStageAction = InputSystem.actions.FindAction("NextStage");
+        backStageAction = InputSystem.actions.FindAction("BackStage");
+        startStageAction = InputSystem.actions.FindAction("StartStage");
 
         // As01_CheckNumberSign();
         // As02_GetDayName();
@@ -36,32 +36,32 @@ public class Assignment : MonoBehaviour
     }
     void Update()
     {
-        //Go Bcak to previous State.
-        if (backStateAction.WasReleasedThisFrame() && state > 0)
+        //Go Bcak to previous Stage.
+        if (backStageAction.WasReleasedThisFrame() && stage > 0)
         {
-            state--;
-            state = state % 12;
-            StateName();
-            Debug.Log($"State : {state} , {stateName}");
-            Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
+            stage--;
+            stage = stage % 12;
+            StageName();
+            Debug.Log($"Stage : {stage} , {stageName}");
+            Debug.Log("Press N To Go Next Stage And Press B To Go To Previous Stage");
             Debug.Log("Press Spacbar to start.");
         }
 
-        //Go to Next State.
-        if (nextStateAction.WasReleasedThisFrame())
+        //Go to Next Stage.
+        if (nextStageAction.WasReleasedThisFrame())
         {
-            state++;
-            state = state % 12;
-            StateName();
-            Debug.Log($"State : {state} , {stateName}");
-            Debug.Log("Press N To Go Next State And Press B To Go To Previous State");
+            stage++;
+            stage = stage % 12;
+            StageName();
+            Debug.Log($"Stage : {stage} , {stageName}");
+            Debug.Log("Press N To Go Next Stage And Press B To Go To Previous Stage");
             Debug.Log("Press Spacbar to start.");
         }
 
-        //Start the state.
-        if (startStateAction.WasReleasedThisFrame())
+        //Start the stage.
+        if (startStageAction.WasReleasedThisFrame())
         {
-            switch (state)
+            switch (stage)
             {
                 case 0:
                     As01_CheckNumberSign();
@@ -111,45 +111,45 @@ public class Assignment : MonoBehaviour
         }
     }
 
-    void StateName()
+    void StageName()
     {
-        switch (state)
+        switch (stage)
         {
             case 0:
-                stateName = "Check Number Sign";
+                stageName = "Check Number Sign";
                 break;
             case 1:
-                stateName = "Get Day Name";
+                stageName = "Get Day Name";
                 break;
             case 2:
-                stateName = "Validate Password";
+                stageName = "Validate Password";
                 break;
             case 3:
-                stateName = "Get Grade";
+                stageName = "Get Grade";
                 break;
             case 4:
-                stateName = "Is Leap Year";
+                stageName = "Is Leap Year";
                 break;
             case 5:
-                stateName = "Calculate";
+                stageName = "Calculate";
                 break;
             case 6:
-                stateName = "Get Season";
+                stageName = "Get Season";
                 break;
             case 7:
-                stateName = "Purchasing System";
+                stageName = "Purchasing System";
                 break;
             case 8:
-                stateName = "Rock Paper Scissors";
+                stageName = "Rock Paper Scissors";
                 break;
             case 9:
-                stateName = "Calculate Weapon Damage";
+                stageName = "Calculate Weapon Damage";
                 break;
             case 10:
-                stateName = "Determine Player Rank";
+                stageName = "Determine Player Rank";
                 break;
             case 11:
-                stateName = "?????";
+                stageName = "?????";
                 break;
         }
     }
@@ -397,7 +397,7 @@ public class Assignment : MonoBehaviour
     public void As11_DeterminePlayerRank()
     {
         string rank;
-        int totalCoin;
+        int totalCoin = 0;
 
         if(as11Score < 0 || as11CompletionTime < 0)
         {
@@ -408,22 +408,22 @@ public class Assignment : MonoBehaviour
         if(as11Score >= 8000)
         {
             rank = "Gold";
-            totalCoin = 100;
+            totalCoin += 100;
         }
         else if(as11Score >= 6000)
         {
             rank = "Silver";
-            totalCoin = 75;
+            totalCoin += 75;
         }
         else if(as11Score >= 4000)
         {
             rank = "Bronze";
-            totalCoin = 50;
+            totalCoin += 50;
         }
         else
         {
             rank = "Participation";
-            totalCoin = 25;
+            totalCoin += 25;
         }
 
         if(as11CompletionTime <= 30)

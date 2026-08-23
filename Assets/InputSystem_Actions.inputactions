@@ -57,7 +57,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "StartState",
+                    "name": "StartStage",
                     "type": "Button",
                     "id": "f1ba0d36-48eb-4cd5-b651-1c94a6531f70",
                     "expectedControlType": "",
@@ -107,7 +107,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "NextState",
+                    "name": "NextStage",
                     "type": "Button",
                     "id": "d2aa4125-dd3a-4f16-86dc-7ca241344e2d",
                     "expectedControlType": "",
@@ -117,7 +117,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "BackState",
+                    "name": "BackStage",
                     "type": "Button",
                     "id": "c6cf3872-df82-4e5a-b4ac-fc1751ae47ed",
                     "expectedControlType": "",
@@ -421,7 +421,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "StartState",
+                    "action": "StartStage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -432,7 +432,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "StartState",
+                    "action": "StartStage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -443,7 +443,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "StartState",
+                    "action": "StartStage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -531,7 +531,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NextState",
+                    "action": "NextStage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -542,7 +542,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BackState",
+                    "action": "BackStage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
